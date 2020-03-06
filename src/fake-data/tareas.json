@@ -1,0 +1,24 @@
+{
+    "tareas": [
+        {
+            "id": "0",
+            "empleado": "1",
+            "descripcion": "Entregar pedido de papas"
+        },
+        {
+            "id": "1",
+            "empleado": "3",
+            "descripcion": "Entregar pedido de hamburguesa con queso"
+        },
+        {
+            "id": "2",
+            "empleado": "3",
+            "descripcion": "Cocinar unos nuggets con papas medianas"
+        },
+        {
+            "id": "3",
+            "empleado": "2",
+            "descripcion": "Limpiar area de juegos"
+        }
+    ]
+}
