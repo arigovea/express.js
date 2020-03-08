@@ -7,8 +7,6 @@ import express, { Router } from 'express';
 import userValidationSchema from '../middlewares/users';
 const router: Router = express.Router(); 
 
-
-
 // Obtener usuarios (listar)
 router.get('/list', listUsers);
 

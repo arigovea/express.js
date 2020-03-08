@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { User, UserSchema } from '../models/user';
 
-export default (req: Request, res: Response, next: NextFunction) =>{
+export default (req: Request, res: Response, next: NextFunction) => {
     const user: User = req.body;
     const validation = UserSchema.validate(user);
 
