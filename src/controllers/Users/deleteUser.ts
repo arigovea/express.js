@@ -7,9 +7,9 @@ export default (req: Request, res: Response) => {
 
     const foundUser = usuarios.findIndex(user => user.id === idToDelete);
     if(foundUser === -1){
-        return res.status(404).send("Usuario no existe");
+        return res.status(404).send(`Usuario ${idToDelete} no existe`);
     }
 
     usuarios.splice(foundUser, 1);
-    res.status(200).send("Eliminado con éxito")
+    res.status(200).send(`Usuario ${foundUser} eliminado con éxito`); 
 };

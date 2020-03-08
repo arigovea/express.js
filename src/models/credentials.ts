@@ -1,13 +1,11 @@
 import joi from '@hapi/joi';
 
-export type User = {
-    id: string;
+export type Credentials = {
     login: string;
     password: string;
 }
 
-export const UserSchema = joi.object().keys({
-    id: joi.string().required(),
+export const CredentialsSchema = joi.object().keys({
     login: joi.string().required(),
     password: joi.string().alphanum().required()
 });

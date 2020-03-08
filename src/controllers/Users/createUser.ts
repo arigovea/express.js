@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 import { usuarios } from '../../fake-data/usuarios.json';
 import { User } from '../../models/user';
 
