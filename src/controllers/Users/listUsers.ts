@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { usuarios } from '../../fake-data/usuarios.json';
+import { UserSql, User } from '../../models/user';
 
-
-export default (req: Request, res: Response) => {
+export default async (req: Request, res: Response) => {
+    const usuarios: User[] = await UserSql.findAll();
     res.status(200).json(usuarios);
 };

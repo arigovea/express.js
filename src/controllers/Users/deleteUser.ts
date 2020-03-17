@@ -1,15 +1,13 @@
 import { Request, Response } from "express";
-import { usuarios } from '../../fake-data/usuarios.json';
+import { UserSql } from "../../models/user";
 
 
-export default (req: Request, res: Response) => {
-    const idToDelete: string = req.params.id;
-
-    const foundUser = usuarios.findIndex(user => user.id === idToDelete);
-    if(foundUser === -1){
-        return res.status(404).send(`Usuario ${idToDelete} no existe`);
+export default async (req: Request, res: Response) => {
+    const id: string = req.params.id;
+    const foundUser = await UserSql.destroy({ where: { id } });
+    if(foundUser < 1){
+        return res.status(404).send(`Usuario ${id} no existe`);
     }
 
-    usuarios.splice(foundUser, 1);
-    res.status(200).send(`Usuario ${foundUser} eliminado con éxito`); 
+    res.status(200).send(`Usuario ${id} eliminado con éxito`); 
 };

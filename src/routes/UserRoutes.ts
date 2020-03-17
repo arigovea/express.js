@@ -4,20 +4,20 @@ import deleteUser from '../controllers/Users/deleteUser';
 import updateUser from '../controllers/Users/updateUser';
 import findUser from '../controllers/Users/getUserbyId';
 import express, { Router } from 'express';
-import userValidationSchema from '../middlewares/users';
+import { usersEditValidator, usersCreateValidator }from '../middlewares/users';
 const router: Router = express.Router(); 
 
 // Obtener usuarios (listar)
 router.get('/list', listUsers);
 
 //Crear un nuevo usuario
-router.post('/create', [userValidationSchema, createUser]); 
+router.post('/create', [usersCreateValidator, createUser]); 
 
 // Delete un usuario en especifico
 router.delete('/delete/:id', deleteUser);
 
 //Actualiza un usuario en especifico
-router.put('/update', [userValidationSchema, updateUser]);
+router.put('/update', [usersEditValidator, updateUser]);
 
 //Retorna un usuario en especifico
 router.get('/find/:id', findUser);
