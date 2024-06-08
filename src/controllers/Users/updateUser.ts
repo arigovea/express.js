@@ -1,15 +1,13 @@
 import { Request, Response } from "express";
-import { usuarios } from '../../fake-data/usuarios.json';
-import { User } from '../../models/user';
+import { User, UserSql } from '../../models/user';
 
-export default (req: Request, res: Response) => {
-    const UserToUpdate: User = req.body; 
-    const index = usuarios.findIndex(user => user.id === UserToUpdate.id);
+export default async (req: Request, res: Response) => {
+    const user: User = req.body; 
+    const userUpdated = await UserSql.update(user, { where: { id: user.id } });
+    
+    if(userUpdated[0] === 0) {
+        return res.status(404).send(`Usuario ${user.id} no existe`);
+    };
 
-    if(index === -1){
-        return res.status(404).send("Usuario no existe");
-    }
-
-    usuarios.splice(index, 1, UserToUpdate);
-    res.status(200).json(UserToUpdate);
+    res.status(200).send(`Usuario ${user.id} actualizado con éxito`); 
 };
